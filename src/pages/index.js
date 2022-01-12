@@ -269,7 +269,7 @@ const IndexPage = props => {
           }
           <StyledItemColumn style={{ marginTop: 80 }}>
             <Button style={{ borderRadius: '20px' }} outlined href='#offer'>
-              <div style={{ padding: '0.5rem' }}>
+              <div>
                 <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
                   <b>Free Demo <span>↗</span></b>
                 </StyledBodySubTitle>
@@ -415,7 +415,7 @@ const DeveloperSection = () => {
         <StyledItemRow>
           <StyledItemColumn>
             <Button style={{ borderRadius: '20px' }} outlined href='#up'>
-              <div style={{ padding: '1rem' }}>
+              <div>
                 <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
                   <b>Demo <span>↗</span></b>
                 </StyledBodySubTitle>

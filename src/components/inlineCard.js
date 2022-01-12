@@ -23,7 +23,7 @@ const StyledMiniCards = styled.a`
   justify-content: space-between;
   transition: transform 0.3s ease;
   will-change: transform;
-  text-align: center;
+  // text-align: center;
   :hover {
     transform: scale(1.03);
   }

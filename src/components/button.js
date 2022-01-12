@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 const ButtonStyles = css`
-  padding: 0.35rem 0.85rem;
+  padding: 0.85rem 0.85rem;
   text-decoration: none;
   border-radius: 12px;
   display: inline-block;
@@ -11,13 +11,11 @@ const ButtonStyles = css`
   cursor: pointer;
   width: fit-content;
   @media (max-width: 960px) {
-    text-align: center;
+    // text-align: center;
     text-decoration: none;
-    padding: 0.25rem 1rem;
   }
   @media (max-width: 640px) {
     width: 100%;
-    padding: 0.85rem 0.85rem;
   }
   :hover {
     transform: scale(1);
