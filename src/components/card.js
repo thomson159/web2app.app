@@ -127,7 +127,7 @@ const NewPill = styled.p`
   left: -1rem;
   top: -0.75rem;
   border-radius: 1rem;
-  text-align: center;
+  // text-align: center;
   margin: 0;
   transform: rotateZ(-20deg);
 `

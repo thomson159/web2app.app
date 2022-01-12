@@ -26,8 +26,6 @@ exports.onPostBuild = () => {
 exports.onCreateNode = ({ node, getNodesByType, actions }) => {
   const { createNodeField, createParentChildLink } = actions
   if (node.internal.type === 'Directory') {
-    // in some case the trailing slash is missing.
-    // Always add it and normalize the path to remove duplication
     const parentDirectory = path.normalize(node.dir + '/')
     const parent = getNodesByType('Directory').find(n => path.normalize(n.absolutePath + '/') === parentDirectory)
     if (parent) {
@@ -38,7 +36,6 @@ exports.onCreateNode = ({ node, getNodesByType, actions }) => {
       })
     }
   }
-  // Ensures we are processing only markdown files
   if (node.internal.type === 'Mdx' || node.internal.type === 'Md') {
     const slugPath = getSlugPath(node.fields.slug)
     createNodeField({

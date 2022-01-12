@@ -6,28 +6,19 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: ``,
-    description: `Automated liquidity protocol on Ethereum`,
-    author: `@Uniswap`,
+    title: `Web2App`,
+    description: `Turn website into app`,
+    author: `@web2app.app`,
     menulinks: menu,
-    siteUrl: `https://uniswap.org`,
-    repository: `https://github.com/Uniswap/uniswap-org`,
+    siteUrl: `https://web2app.app/`,
+    repository: `https://github.com/thomson159/web2app-landing-page`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-        bucketName: process.env.AWS_S3_BUCKET || 'NOT_SPECIFIED',
-        protocol: 'https',
-        hostname: 'uniswap.org',
-        acl: null
-      }
-    },
-    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://uniswap.org`
+        siteUrl: `https://web2app.app`
       }
     },
     {
@@ -84,9 +75,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
-              title: 'Uniswap', // website title
+              title: 'Web2App', // website title
               separator: '|', // default
-              author: '@Uniswap',
+              author: '@web2app.app',
               background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
               fontColor: '#FF3093', // defaults to white (#ffffff)
               fontStyle: 'sans-serif', // default
@@ -136,49 +127,5 @@ module.exports = {
         defer: false
       }
     },
-    // {
-    //   resolve: `gatsby-plugin-google-gtag`,
-    //   options: {
-    //     // You can add multiple tracking ids and a pageview event will be fired for all of them.
-    //     trackingIds: [
-    //       'UA-128182339-3' // Google Analytics / GA
-    //     ],
-    //     gtagConfig: {
-    //       anonymize_ip: true,
-    //       cookie_expires: 0
-    //     }
-    //   }
-    // },
-    // {
-    //   resolve: `gatsby-plugin-feed`,
-    //   options: {
-    //     query: `
-    //       {
-    //         site {
-    //           siteMetadata {
-    //             title
-    //             description
-    //             siteUrl
-    //             site_url: siteUrl
-    //           }
-    //         }
-    //       }
-    //     `,
-        
-    //   }
-    // },
-    'gatsby-plugin-eslint',
-    {
-      resolve: `gatsby-plugin-algolia-docsearch-appid`,
-      options: {
-        apiKey: '8962240e69e6d23a88432f501c115470',
-        indexName: 'uniswap_v2_docs',
-        appId: 'VZ0CVS8XCW',
-        inputSelector: 'blank' // use dummy selector to avoid double render
-      }
-    }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ]
 }

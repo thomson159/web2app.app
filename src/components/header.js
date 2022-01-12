@@ -1,17 +1,19 @@
-
+import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
-// import { useMediaQuery } from '@react-hook/media-query'
-// import { useStaticQuery, graphql } from 'gatsby'
+import { useMediaQuery } from '@react-hook/media-query'
+import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-// import Menu from './menu'
-// import MenuIcon from '../images/menu.inline.svg'
-// import CloseIcon from '../images/x.inline.svg'
+import Menu from './menu'
+
+import Logo from '../images/web2appLogo.svg'
+import MenuIcon from '../images/menu.inline.svg'
+import CloseIcon from '../images/x.inline.svg'
 
 import { Sun, Moon } from 'react-feather'
 import { useDarkMode } from '../contexts/Application'
 
-// import useDocumentScrollThrottled from '../utils/useDocumentScrollThrottled'
+import useDocumentScrollThrottled from '../utils/useDocumentScrollThrottled'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -55,11 +57,9 @@ const StyledNav = styled.nav`
     overflow: auto;
     box-shadow: ${({ theme }) => theme.shadows.huge};
   }
-
   > * + * {
     margin-left: 24px;
   }
-
   @media (max-width: 960px) {
     > * + * {
       margin-left: 0;
@@ -67,60 +67,42 @@ const StyledNav = styled.nav`
   }
 `
 
-// const MenuToggle = styled.button`
-//   border: none;
-//   background-color: transparent;
-//   color: ${({ theme }) => theme.colors.grey9};
-//   display: none;
-//   z-index: 9999;
-//   width: 24px;
-//   height: 24px;
-//   padding: 0px;
-
-//   :focus {
-//     outline: none;
-//   }
-
-//   @media (max-width: 960px) {
-//     display: initial;
-//     position: ${({ open }) => (open ? 'fixed' : 'relative')};
-//     right: ${({ open }) => (open ? '1.5rem' : 'initial')};
-//     top: ${({ open }) => (open ? '1.5rem' : 'initial')};
-//   }
-// `
-
-// const StyledCloseIcon = styled(CloseIcon)`
-//   path {
-//     stroke: ${({ theme }) => theme.textColor};
-//   }
-// `
-
-// const StyledMenuIcon = styled(MenuIcon)`
-//   path {
-//     stroke: ${({ theme }) => theme.textColor};
-//   }
-// `
-
-const HideSmall = styled.span`
-  @media (max-width: 960px) {
-    display: none;
-  }
+const StyledNavTitleWrapper = styled.nav`
+  display: flex;
+  align-items: center;
+  width: 100%;
 `
+
+// const StyledTradeLink = styled.a`
+//   padding: 0.25rem 0.75rem;
+//   background-color: ${({ theme }) => theme.textColor};
+//   text-decoration: none;
+//   color: ${({ theme }) => theme.invertedTextColor};
+//   border-radius: 12px;
+//   display: inline-block;
+//   font-weight: 500;
+//   width: 100%;
+//   width: min-content;
+//   white-space: nowrap;
+//   margin-left: 1rem;
+//   border: 1px solid transparent;
+//   box-shadow: ${({ theme }) => theme.shadows.small};
+//   :hover,
+//   :focus {
+//     border: 1px solid white;
+//   }
+// `
 
 const StyledButton = styled.button`
   border: none;
   background-color: rgba(0, 0, 0, 0);
-
   path {
     fill: ${({ theme }) => theme.textColor};
   }
-
   color: ${({ theme }) => theme.textColor};
-  
   :focus {
     outline: none;
   }
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -129,84 +111,136 @@ const StyledButton = styled.button`
   }
 `
 
+const StyledHomeLink = styled(Link)`
+  max-height: 48px;
+  display: flex;
+  align-items: center;
+`
+
+const MenuToggle = styled.button`
+  border: none;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.grey9};
+  display: none;
+  z-index: 9999;
+  width: 24px;
+  height: 24px;
+  padding: 0px;
+  :focus {
+    outline: none;
+  }
+  @media (max-width: 960px) {
+    display: initial;
+    position: ${({ open }) => (open ? 'fixed' : 'relative')};
+    right: ${({ open }) => (open ? '1.5rem' : 'initial')};
+    top: ${({ open }) => (open ? '1.5rem' : 'initial')};
+  }
+`
+
+const StyledCloseIcon = styled(CloseIcon)`
+  path {
+    stroke: ${({ theme }) => theme.textColor};
+  }
+`
+
+const StyledMenuIcon = styled(MenuIcon)`
+  path {
+    stroke: ${({ theme }) => theme.textColor};
+  }
+`
+
 const Header = () => {
-  // const matches = useMediaQuery('only screen and (max-width: 1024px)')
+  const matches = useMediaQuery('only screen and (max-width: 1024px)')
   const node = useRef()
-  // const button = useRef()
+  const button = useRef()
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
   const [darkMode, toggleDarkMode] = useDarkMode()
 
   const [headerBG, setHeaderBG] = useState(false)
 
-  // useDocumentScrollThrottled(callbackData => {
-  //   const { currentScrollTop } = callbackData
-  //   const isScrolledDown = previousScrollTop < currentScrollTop
-  //   const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL
-  //   setHeaderBG(currentScrollTop > 2)
-  //   setTimeout(() => {
-  //     setSidebarBG(isScrolledDown && isMinimumScrolled)
-  //   }, TIMEOUT_DELAY)
-  // })
+  useDocumentScrollThrottled(callbackData => {
+    const { currentScrollTop } = callbackData
+    setHeaderBG(currentScrollTop > 2)
+  })
 
-  // const data = useStaticQuery(graphql`
-  //   {
-  //     site {
-  //       siteMetadata {
-  //         menulinks {
-  //           name
-  //           sublinks {
-  //             name
-  //             link
-  //           }
-  //         }
-  //         title
-  //       }
-  //     }
-  //   }
-  // `)
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          menulinks {
+            name
+            sublinks {
+              name
+              link
+            }
+          }
+          title
+        }
+      }
+    }
+  `)
 
-  // useLayoutEffect(() => {
-  //   // Get original body overflow
-  //   const originalStyle = window.getComputedStyle(document.body).overflow
-  //   // Prevent scrolling on mount
-  //   if (isMenuOpen) {
-  //     document.body.style.overflow = 'hidden'
-  //     document.body.style.maxHeight = '-webkit-fill-available'
-  //   }
-  //   // Re-enable scrolling when component unmounts
-  //   return () => (document.body.style.overflow = originalStyle)
-  // }, [isMenuOpen]) // Empty array ensures effect is only run on mount and unmount
+  useLayoutEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.maxHeight = '-webkit-fill-available'
+    }
+    return () => (document.body.style.overflow = originalStyle)
+  }, [isMenuOpen])
 
-  // useEffect(() => {
-  //   const handleClickOutside = e => {
-  //     if (backend.current.contains(e.target) || button.current.contains(e.target)) {
-  //       return
-  //     }
-  //     updateIsMenuOpen(false)
-  //   }
-  //   document.addEventListener('mousedown', handleClickOutside)
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside)
-  //   }
-  // }, [isMenuOpen, updateIsMenuOpen, matches])
+  useEffect(() => {
+    const handleClickOutside = e => {
+      if (node.current.contains(e.target) || button.current.contains(e.target)) {
+        return
+      }
+      updateIsMenuOpen(false)
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen, updateIsMenuOpen, matches])
 
   return (
     <StyledHeader open={isMenuOpen} showBG={headerBG}>
-      {/* <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
+      <StyledNavTitleWrapper>
+        <StyledHomeLink to="/"
+          style={{
+            textDecoration: `none`
+          }}>
+          <img
+            alt='logo'
+            className='myLogo'
+            src={Logo}
+            style={{
+              width: 32
+            }}
+          />
+        </StyledHomeLink>
+      </StyledNavTitleWrapper>
+      <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
         {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
-      </MenuToggle> */}
+      </MenuToggle>
       <StyledNav ref={node} open={isMenuOpen}>
-        {/* {data.site.siteMetadata.menulinks.map(item => {
+        {data.site.siteMetadata.menulinks.map(item => {
           return <Menu key={item.name} data={item} />
-        })} */}
-        <HideSmall>
-
-          <StyledButton type='button' onClick={toggleDarkMode}>
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </StyledButton>
-
-        </HideSmall>
-
+        })}
+        <StyledButton type="button" onClick={toggleDarkMode}>
+          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+        </StyledButton>
+        {/* <StyledTradeLink
+          style={{
+            background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
+            color: 'white'
+          }}
+          target="_blank"
+          href="https://drive.google.com/file/d/1UUJebaiuB7gQXhlMwiiWN57STG7vlKLI/view?usp=sharing"
+        >
+          Download our app
+        </StyledTradeLink> */}
       </StyledNav>
     </StyledHeader>
   )

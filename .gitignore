@@ -5,3 +5,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 build
+.firebase
+public_dev
+.cache
+public
