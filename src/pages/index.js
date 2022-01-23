@@ -178,12 +178,12 @@ const IndexPage = props => {
       url: url
     }
     try {
-      const response = await fetch('http://localhost:8001/create', {
+      const response = await fetch('https://130.211.216.169/create', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'http://localhost:8001'
+          'Access-Control-Allow-Origin': 'https://130.211.216.169/'
         },
         mode: 'cors',
         cache: 'no-cache',
