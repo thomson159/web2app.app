@@ -1,6 +1,6 @@
 # web2app
 
-https://web2app-landing-page.web.app/
+https://web2app.app/
 
 Contains the source code for the [uniswap.org](https://uniswap.org) homepage.
 
