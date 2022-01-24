@@ -178,12 +178,12 @@ const IndexPage = props => {
       url: url
     }
     try {
-      const response = await fetch('https://130.211.216.169/create', {
+      const response = await fetch('https://api.web2app.app/create', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://130.211.216.169/'
+          'Access-Control-Allow-Origin': 'https://api.web2app.app/'
         },
         mode: 'cors',
         cache: 'no-cache',
