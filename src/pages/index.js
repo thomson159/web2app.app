@@ -231,7 +231,7 @@ const IndexPage = props => {
                       placeholder='https://yourwebsite.com/'
                     />
                   </StyledItemRow>
-                  <b style={{ color: 'black' }}>
+                  <b>
                     Free. No account. Estimated time is 20 minutes.
                   </b>
                   <div style={{ marginTop: 30 }}>
@@ -242,7 +242,7 @@ const IndexPage = props => {
                 </>
               ) : (
                 <>
-                  <b style={{ color: 'red' }}>
+                  <b>
                     System temporarily shut down.
                   </b>
                 </>
@@ -486,7 +486,7 @@ const DeveloperSection = () => {
       </StyledSection>
       <a href="https://drive.google.com/file/d/1UUJebaiuB7gQXhlMwiiWN57STG7vlKLI/view?usp=sharing"
         target="_blank"
-        style={{ width: 161 }}
+        style={{ width: 161, marginTop: 30 }}
       >
         <StyledTradeButton type='button'>
           Download our app
