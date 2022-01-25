@@ -185,7 +185,7 @@ const IndexPage = props => {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': 'https://api.web2app.app/'
         },
-        mode: 'cors',
+        mode: 'no-cors',
         cache: 'no-cache',
         body: JSON.stringify(data)
       })
