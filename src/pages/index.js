@@ -231,7 +231,7 @@ const IndexPage = props => {
                       placeholder='https://yourwebsite.com/'
                     />
                   </StyledItemRow>
-                  <b>
+                  <b style={{ color: 'black' }}>
                     Free. No account. Estimated time is 20 minutes.
                   </b>
                   <div style={{ marginTop: 30 }}>
