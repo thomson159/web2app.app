@@ -6,12 +6,12 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: ``,
-    description: `Automated liquidity protocol on Ethereum`,
-    author: `@Uniswap`,
+    title: `web2app`,
+    description: `Turn website into app`,
+    author: `@web2app`,
     menulinks: menu,
-    siteUrl: `https://uniswap.org`,
-    repository: `https://github.com/Uniswap/uniswap-org`,
+    siteUrl: `https://web2app.app/`,
+    repository: `https://github.com/thomson159/web2app-landing-page`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
   plugins: [
@@ -20,14 +20,14 @@ module.exports = {
       options: {
         bucketName: process.env.AWS_S3_BUCKET || 'NOT_SPECIFIED',
         protocol: 'https',
-        hostname: 'uniswap.org',
+        hostname: 'web2app.app',
         acl: null
       }
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://uniswap.org`
+        siteUrl: `https://web2app.app`
       }
     },
     {
@@ -84,9 +84,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
-              title: 'Uniswap', // website title
+              title: 'web2app', // website title
               separator: '|', // default
-              author: '@Uniswap',
+              author: '@web2app',
               background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
               fontColor: '#FF3093', // defaults to white (#ffffff)
               fontStyle: 'sans-serif', // default
@@ -164,19 +164,19 @@ module.exports = {
     //         }
     //       }
     //     `,
-        
+
     //   }
     // },
-    'gatsby-plugin-eslint',
-    {
-      resolve: `gatsby-plugin-algolia-docsearch-appid`,
-      options: {
-        apiKey: '8962240e69e6d23a88432f501c115470',
-        indexName: 'uniswap_v2_docs',
-        appId: 'VZ0CVS8XCW',
-        inputSelector: 'blank' // use dummy selector to avoid double render
-      }
-    }
+    // 'gatsby-plugin-eslint',
+    // {
+    //   resolve: `gatsby-plugin-algolia-docsearch-appid`,
+    //   options: {
+    //     apiKey: '8962240e69e6d23a88432f501c115470',
+    //     indexName: 'uniswap_v2_docs',
+    //     appId: 'VZ0CVS8XCW',
+    //     inputSelector: 'blank' // use dummy selector to avoid double render
+    //   }
+    // }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

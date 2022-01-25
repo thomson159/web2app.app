@@ -181,17 +181,16 @@ const IndexPage = props => {
       const response = await fetch('https://api.web2app.app/create', {
         method: 'POST',
         headers: {
-          Accept: 'application/json',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': 'https://api.web2app.app/'
         },
-        mode: 'no-cors',
-        cache: 'no-cache',
+        mode: 'cors',
+        credentials: 'include',
         body: JSON.stringify(data)
       })
       const test = await response.json()
       if (response.status === 200) {
-        var urlRegex = /(https?:\/\/[^ ]*)/
+        var urlRegex = /(https?:\/\/[^]*.apk)/
         const matches = test.responseLogs.substring(500).match(urlRegex)[0]
         setFinalUrl(matches)
         setShow('success')
@@ -270,7 +269,7 @@ const IndexPage = props => {
               <StyledBodySubTitle>
                 👍 Application development completed successfully.
               </StyledBodySubTitle>
-              <StyledTradeButton onClick={() => { window.open(finalUrl, '_self') }}>
+              <StyledTradeButton onClick={() => { window.open(finalUrl, '_blank') }}>
                 Download app
               </StyledTradeButton>
             </>
