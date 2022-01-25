@@ -178,7 +178,7 @@ const IndexPage = props => {
       url: url
     }
     try {
-      const response = await fetch('https://api.web2app.app/create', {
+      const response = await fetch('https://api.web2app.app/create/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
