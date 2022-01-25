@@ -202,8 +202,11 @@ const IndexPage = props => {
       setShow('error')
     }
   }
-
-  const aValue = localStorage.getItem("showMe");
+  let local = "false"
+  if (typeof window !== "undefined") {
+    local = window.localStorage.getItem("showMe");
+  }
+  const aValue = local;
   return (
     <Layout path={props.location.pathname} id='up'>
       <SEO title='' path={props.location.pathname} description='' />
@@ -218,25 +221,27 @@ const IndexPage = props => {
               <StyledBodySubTitle>
                 😎 Enter the website address.
               </StyledBodySubTitle>
-              <StyledItemRow>
-                {aValue === "true" &&
-                  <StyledInput
-                    required={true}
-                    value={url}
-                    onChange={e => setUrl(e.target.value)}
-                    type='url'
-                    placeholder='https://yourwebsite.com/'
-                  />
-                }
-              </StyledItemRow>
-              <b>
-                Free. No account. Estimated time is 20 minutes.
-              </b>
-              <div style={{ marginTop: 30 }}>
-              </div>
-              <StyledTradeButton type='submit'>
-                Create app
-              </StyledTradeButton>
+              {aValue === "true" &&
+                <>
+                  <StyledItemRow>
+                    <StyledInput
+                      required={true}
+                      value={url}
+                      onChange={e => setUrl(e.target.value)}
+                      type='url'
+                      placeholder='https://yourwebsite.com/'
+                    />
+                  </StyledItemRow>
+                  <b>
+                    Free. No account. Estimated time is 20 minutes.
+                  </b>
+                  <div style={{ marginTop: 30 }}>
+                  </div>
+                  <StyledTradeButton type='submit'>
+                    Create app
+                  </StyledTradeButton>
+                </>
+              }
             </form>
           }
           {show === 'load' &&
