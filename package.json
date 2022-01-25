@@ -1,7 +1,7 @@
 {
   "name": "@uniswap/org",
   "private": true,
-  "description": "Uniswap homepage and knowledgebase",
+  "description": "Turn website into app",
   "version": "0.1.0",
   "author": "Callil Capuozzo <callil.capuozzo@gmail.com>",
   "engines": {

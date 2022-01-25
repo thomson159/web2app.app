@@ -478,6 +478,14 @@ const DeveloperSection = () => {
           </StyledItemColumn>
         </StyledItemRow>
       </StyledSection>
+      <a href="https://drive.google.com/file/d/1UUJebaiuB7gQXhlMwiiWN57STG7vlKLI/view?usp=sharing"
+        target="_blank"
+        style={{ width: 161 }}
+      >
+        <StyledTradeButton type='button'>
+          Download our app
+        </StyledTradeButton>
+      </a>
     </>
   )
 }
