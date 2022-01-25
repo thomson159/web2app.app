@@ -220,7 +220,7 @@ const IndexPage = props => {
               <StyledBodySubTitle>
                 😎 Enter the website address.
               </StyledBodySubTitle>
-              {aValue === "true" &&
+              {aValue === "true" ? (
                 <>
                   <StyledItemRow>
                     <StyledInput
@@ -240,7 +240,13 @@ const IndexPage = props => {
                     Create app
                   </StyledTradeButton>
                 </>
-              }
+              ) : (
+                <>
+                  <b style={{ color: 'red' }}>
+                    System temporarily shut down.
+                  </b>
+                </>
+              )}
             </form>
           }
           {show === 'load' &&
