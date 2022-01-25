@@ -203,6 +203,7 @@ const IndexPage = props => {
     }
   }
 
+  const aValue = localStorage.getItem("showMe");
   return (
     <Layout path={props.location.pathname} id='up'>
       <SEO title='' path={props.location.pathname} description='' />
@@ -218,13 +219,15 @@ const IndexPage = props => {
                 😎 Enter the website address.
               </StyledBodySubTitle>
               <StyledItemRow>
-                <StyledInput
-                  required={true}
-                  value={url}
-                  onChange={e => setUrl(e.target.value)}
-                  type='url'
-                  placeholder='https://yourwebsite.com/'
-                />
+                {aValue === "true" &&
+                  <StyledInput
+                    required={true}
+                    value={url}
+                    onChange={e => setUrl(e.target.value)}
+                    type='url'
+                    placeholder='https://yourwebsite.com/'
+                  />
+                }
               </StyledItemRow>
               <b>
                 Free. No account. Estimated time is 20 minutes.
