@@ -1,4 +1,4 @@
-# web2app
+# web2app.app
 
 Contains the source code for the [uniswap.org](https://uniswap.org) homepage.
 
