@@ -2,7 +2,7 @@ const menu = [
   {
     name: 'Developers',
     sublinks: [
-      { name: 'GitHub', link: 'https://github.com/thomson159/web2app-landing-page' }
+      { name: 'GitHub', link: 'https://github.com/thomson159/web2app.app' }
     ]
   },
   {

@@ -55,7 +55,7 @@ const Footer = () => {
     <StyledFooter>
       <StyledFooterLinkSection>
         <StyledFooterLink to="/"></StyledFooterLink>
-        <a href="https://github.com/thomson159/web2app-landing-page" rel="noopener noreferrer" target="_blank">
+        <a href="https://github.com/thomson159/web2app.app" rel="noopener noreferrer" target="_blank">
           <StyledGithub />
         </a>
         <a href="https://discord.gg/cf8cZ8Vw" rel="noopener noreferrer" target="_blank">
