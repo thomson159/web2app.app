@@ -53,14 +53,12 @@ const StyledGithub = styled(Github)`
 const Footer = () => {
   return (
     <StyledFooter>
-
-      <p style={{ margin: 0 }}>© {new Date().getFullYear()} </p>
       <StyledFooterLinkSection>
         <StyledFooterLink to="/"></StyledFooterLink>
         <a href="https://github.com/thomson159/web2app-landing-page" rel="noopener noreferrer" target="_blank">
           <StyledGithub />
         </a>
-        <a href="https://discord.com/users/716946817669005322" rel="noopener noreferrer" target="_blank">
+        <a href="https://discord.gg/cf8cZ8Vw" rel="noopener noreferrer" target="_blank">
           <StyledDiscord />
         </a>
       </StyledFooterLinkSection>

@@ -6,6 +6,7 @@ import { Button } from '../components/button'
 import DevImage from '../images/developer.png'
 import GovImage from '../images/governance.png'
 import AppsImage from '../images/apps.png'
+import BG from '../components/bg'
 
 const StyledBody = styled.div`
   position: relative;
@@ -208,7 +209,8 @@ const IndexPage = props => {
   const aValue = local;
   return (
     <Layout path={props.location.pathname} id='up'>
-      <SEO title='' path={props.location.pathname} description='' />
+      <SEO title='Turn website into app' path={props.location.pathname} description='Turn website into app' />
+      <BG />
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>
@@ -442,9 +444,6 @@ const DeveloperSection = () => {
                   🛠 The offer allows you to download a <b><span>.apk</span></b> file with a size of 56.4 MB once.
                 </StyledInfoText>
                 <StyledInfoText>
-                  🛠 The application works in a hybrid manner. It is a combination of two solutions, a native application and a web application. This means that the website gains the advantages of a native solution.
-                </StyledInfoText>
-                <StyledInfoText>
                   🛠 The application requires a permanent internet connection.
                 </StyledInfoText>
                 <StyledInfoText>
@@ -484,14 +483,6 @@ const DeveloperSection = () => {
           </StyledItemColumn>
         </StyledItemRow>
       </StyledSection>
-      <a href="https://drive.google.com/file/d/1UUJebaiuB7gQXhlMwiiWN57STG7vlKLI/view?usp=sharing"
-        target="_blank"
-        style={{ width: 161, marginTop: 30 }}
-      >
-        <StyledTradeButton type='button'>
-          Download our app
-        </StyledTradeButton>
-      </a>
     </>
   )
 }
