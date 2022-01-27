@@ -1,5 +1,7 @@
 # web2app.app
 
+Turn website into app.
+
 Contains the source code for the [uniswap.org](https://uniswap.org) homepage.
 
 ## Development
