@@ -234,8 +234,14 @@ const IndexPage = props => {
                     />
                   </StyledItemRow>
                   <b>
-                    Free. No account. Estimated time is 20 minutes.
+                    Free. No account.
                   </b>
+                  <br />
+                  <div style={{ marginTop: 10 }}>
+                    Estimated time is 20 minutes.
+                    <br />To download the application, you must have a permanent internet connection.
+                    <br />You cannot turn off the website and you have to wait until the app is built.
+                  </div>
                   <div style={{ marginTop: 30 }}>
                   </div>
                   <StyledTradeButton type='submit'>
@@ -262,7 +268,8 @@ const IndexPage = props => {
                 <div></div>
                 <div></div>
               </div>
-              Wait. This may take a while. The availability of the offer and the time of building the application depend on the server load.
+              Don't turn off the page. This may take a while. Estimated time is 20 minutes.
+              <br />The availability of the offer and the time of building the application depend on the server load.
             </>
           }
           {show === 'error' &&
@@ -415,7 +422,7 @@ const EcosystemSection = () => {
           <StyledSectionHeader>How does this work? →</StyledSectionHeader>
           <StyledBodySubText style={{ marginRight: '48px' }}>
             The application displays the content of the website.
-            The website must be adapted to mobile devices.
+            <br />The website must be adapted to mobile devices.
           </StyledBodySubText>
         </span>
       </StyledItemRow>
@@ -447,18 +454,11 @@ const DeveloperSection = () => {
                   🛠 The application requires a permanent internet connection.
                 </StyledInfoText>
                 <StyledInfoText>
-                  ✅ You don't have to worry about updating the application.
-                  If you make changes to the website, the application will be updated automatically.
+                  ✅ You don't have to worry about updating the application. If you make changes to the website, the application will be updated automatically.
                 </StyledInfoText>
                 <StyledInfoText>
                   ✅ To build the application, you only need to enter the website address. You can enter any address. You
                   don't need to be the site owner and have access to the code or the server.
-                </StyledInfoText>
-                <StyledInfoText>
-                  ✅ You don't need to create an account.
-                </StyledInfoText>
-                <StyledInfoText>
-                  ❌ The availability of the offer and the time of building the application depend on the server load.
                 </StyledInfoText>
                 <StyledInfoText>
                   ❌ You cannot set your icon, application name and assign applications with your own keys.
@@ -468,11 +468,6 @@ const DeveloperSection = () => {
                 </StyledInfoText>
                 <StyledInfoText>
                   ❌ It is not possible to make additional changes in the application.
-                </StyledInfoText>
-                <StyledInfoText>
-                  ❌ The application cannot be stored on our website. To download the application, you must have a
-                  permanent internet connection. You cannot turn off the website and you have to wait until the app is
-                  built.
                 </StyledInfoText>
                 <StyledInfoText>
                   ❌ We do not provide technical support, but if we have such an opportunity, we will be happy to answer
