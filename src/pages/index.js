@@ -7,6 +7,11 @@ import DevImage from '../images/developer.png'
 import GovImage from '../images/governance.png'
 import AppsImage from '../images/apps.png'
 import BG from '../components/bg'
+import Image from '../images/ca.png'
+import Image2 from '../images/bu.png'
+import { useDarkMode } from '../contexts/Application'
+import axios from 'axios';
+import CookieConsent from "react-cookie-consent";
 
 const StyledBody = styled.div`
   position: relative;
@@ -171,6 +176,7 @@ const IndexPage = props => {
   const [url, setUrl] = useState('')
   const [show, setShow] = useState('url')
   const [finalUrl, setFinalUrl] = useState('')
+  const [darkMode] = useDarkMode()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -179,16 +185,18 @@ const IndexPage = props => {
       url: url
     }
     try {
-      const response = await fetch('https://api.web2app.app/create/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://api.web2app.app/'
-        },
-        mode: 'cors',
-        credentials: 'include',
-        body: JSON.stringify(data)
-      })
+      // const response = await fetch('https://api.web2app.app/create/', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Access-Control-Allow-Origin': 'https://api.web2app.app/'
+      //   },
+      //   mode: 'cors',
+      //   credentials: 'include',
+      //   body: JSON.stringify(data)
+      // })
+      const response = await axios.post(`https://api.web2app.app/create`, JSON.stringify(data))
+
       const test = await response.json()
       if (response.status === 200) {
         var urlRegex = /(https?:\/\/[^]*.apk)/
@@ -206,55 +214,54 @@ const IndexPage = props => {
   if (typeof window !== "undefined") {
     local = window.localStorage.getItem("showMe");
   }
-  const aValue = local;
+
   return (
     <Layout path={props.location.pathname} id='up'>
+      <CookieConsent
+        location="bottom"
+        buttonText="OK"
+        cookieName="web2app-cookies"
+        expires={150}
+      >
+        This website uses cookies to enhance the user experience.
+      </CookieConsent>
       <SEO title='Turn website into app' path={props.location.pathname} description='Turn website into app' />
       <BG />
+      <img src={!darkMode ? Image : Image2} alt="image"
+        style={{
+          position: 'fixed',
+          top: 140,
+          left: 1000,
+          width: 600,
+        }} />
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>
-            <span style={{ fontWeight: 200 }}>Turn website </span>
-            into app
+            <span style={{ fontWeight: 200 }}>Turn </span>
+            web<span style={{ fontWeight: 200 }}>site in</span>to app
           </StyledBodyTitle>
           {show === 'url' &&
             <form onSubmit={handleSubmit}>
               <StyledBodySubTitle>
-                😎 Enter the website address.
+                😎 Free. No account. Enter the website address.
               </StyledBodySubTitle>
-              {aValue === "true" ? (
-                <>
-                  <StyledItemRow>
-                    <StyledInput
-                      required={true}
-                      value={url}
-                      onChange={e => setUrl(e.target.value)}
-                      type='url'
-                      placeholder='https://yourwebsite.com/'
-                    />
-                  </StyledItemRow>
-                  <b>
-                    Free. No account.
-                  </b>
-                  <br />
-                  <div style={{ marginTop: 10 }}>
-                    Estimated time is 20 minutes.
-                    <br />To download the application, you must have a permanent internet connection.
-                    <br />You cannot turn off the website and you have to wait until the app is built.
-                  </div>
-                  <div style={{ marginTop: 30 }}>
-                  </div>
-                  <StyledTradeButton type='submit'>
-                    Create app
-                  </StyledTradeButton>
-                </>
-              ) : (
-                <>
-                  <b>
-                    System temporarily shut down.
-                  </b>
-                </>
-              )}
+              <StyledItemRow>
+                <StyledInput
+                  required={true}
+                  value={url}
+                  onChange={e => setUrl(e.target.value)}
+                  type='url'
+                  placeholder='https://yourwebsite.com/'
+                />
+              </StyledItemRow>
+              <div style={{ marginBottom: 30 }}>
+                Estimated time is 20 minutes.
+                <br />To download the application, you must have a permanent internet connection.
+                <br />You cannot turn off the website and you have to wait until the app is built.
+              </div>
+              <StyledTradeButton type='submit'>
+                Create app
+              </StyledTradeButton>
             </form>
           }
           {show === 'load' &&
@@ -416,7 +423,7 @@ const StyledInfoText = styled.div`
 
 const EcosystemSection = () => {
   return (
-    <StyledSection>
+    <StyledSection id='offer'>
       <StyledItemRow>
         <span>
           <StyledSectionHeader>How does this work? →</StyledSectionHeader>
@@ -433,10 +440,10 @@ const EcosystemSection = () => {
 const DeveloperSection = () => {
   return (
     <>
-      <StyledSection id='offer'>
+      <StyledSection>
         <StyledItemRow>
           <StyledItemColumn>
-            <Button style={{ borderRadius: '20px' }} outlined href='#up'>
+            <Button style={{ backdropFilter: 'blur(4px)', borderRadius: '20px' }} outlined href='#up'>
               <div>
                 <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
                   <b>Demo <span>↗</span></b>
@@ -478,6 +485,9 @@ const DeveloperSection = () => {
           </StyledItemColumn>
         </StyledItemRow>
       </StyledSection>
+      <div>
+        Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6" target='_blank'>Icons 8</a>
+      </div>
     </>
   )
 }

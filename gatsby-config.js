@@ -6,9 +6,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `web2app`,
+    title: `web2app.app`,
     description: `Turn website into app`,
-    author: `@web2app`,
+    author: `@web2app.app`,
     menulinks: menu,
     siteUrl: `https://web2app.app/`,
     repository: `https://github.com/thomson159/web2app-landing-page`,
@@ -84,9 +84,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
-              title: 'web2app', // website title
+              title: 'web2app.app', // website title
               separator: '|', // default
-              author: '@web2app',
+              author: '@web2app.app',
               background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
               fontColor: '#FF3093', // defaults to white (#ffffff)
               fontStyle: 'sans-serif', // default

@@ -36,7 +36,7 @@ const Layout = ({ path, children, nofooter }) => {
       <Header
         path={path}
         // siteTitle={data.site.siteMetadata.title}
-        siteTitle={"web2app"}
+        siteTitle={"web2app.app"}
       />
       <Mdx>
         {children}
