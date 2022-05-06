@@ -5,7 +5,6 @@ import { Info as InfoIcon } from 'react-feather'
 const StyledInfo = styled.div`
   color: ${({ theme }) => theme.textColor};
   padding: 1rem;
-  /* background-color: ${({ theme }) => theme.colors.yellow2}; */
   border-radius: 0.5rem;
   border: 1px solid ${({ theme }) => theme.textColor};
   margin-bottom: 1.5rem;

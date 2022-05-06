@@ -64,7 +64,7 @@ export function Updater() {
     } else {
       updateDarkMode(DARK_MODE_OPTION.DARK.LIGHT)
     }
-  }, [])
+  }, [updateDarkMode])
   return null
 }
 

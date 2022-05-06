@@ -207,12 +207,10 @@ const Header = props => {
   return (
     <StyledHeader open={isMenuOpen} showBG={headerBG}>
       <StyledNavTitleWrapper>
-        <StyledHomeLink
-          to="/"
+        <StyledHomeLink to="/"
           style={{
             textDecoration: `none`
-          }}
-        >
+          }}>
           <img
             alt='logo'
             className='myLogo'

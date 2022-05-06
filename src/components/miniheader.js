@@ -3,7 +3,6 @@ import React, { useRef, useState } from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Search from './algoliaSearch'
 import Uni from '../images/uni.inline.svg'
 import { Sun, Moon, Home } from 'react-feather'
 
@@ -11,10 +10,6 @@ import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
 import Discord from '../images/discord.inline.svg'
 import Github from '../images/githubicon.inline.svg'
-
-// import SidebarV2 from './sidebarV2'
-// import SidebarV1 from './sidebarV1'
-import { useMediaQuery } from '@react-hook/media-query'
 
 import { useDarkMode } from '../contexts/Application'
 
@@ -91,22 +86,6 @@ const StyledNavTitleWrapper = styled.nav`
   flex-wrap: wrap;
 `
 
-const StyledNavTitle = styled(Link)`
-  font-family: 'Inter', sans-serif;
-  color: ${({ theme }) => theme.textColor};
-  margin-left: 0.35rem;
-  margin-bottom: 0.15rem;
-  z-index: 999;
-  text-decoration: none;
-  vertical-align: bottom;
-  font-weight: 500;
-  white-space: pre;
-
-  :hover {
-    opacity: 1;
-  }
-`
-
 const StyledHomeLink = styled(Link)`
   max-height: 48px;
   display: flex;
@@ -147,14 +126,6 @@ const Row = styled.div`
   justify-content: space-between;
   width: 100%;
 `
-const MobileSearchWrapper = styled.div`
-  display: none;
-  @media (max-width: 960px) {
-    display: initial;
-    margin-top: 20px;
-    width: 100%;
-  }
-`
 
 const MenuToggle = styled.button`
   border: none;
@@ -177,85 +148,25 @@ const MenuToggle = styled.button`
   }
 `
 
-const VersionLabel = styled.span`
-  padding: 0.15rem 0.45rem;
-  border-radius: 12px;
-  background: ${({ theme, toggled }) => (toggled ? theme.textColor : 'none')};
-  color: ${({ theme, toggled }) => (toggled ? theme.invertedTextColor : theme.textColor)};
-
-  font-size: 0.75rem;
-  font-weight: 400;
-`
-
-const VersionToggle = styled(Link)`
-  border-radius: 14px;
-  margin-right: 1rem;
-  color: ${({ theme }) => theme.invertedTextColor};
-  border: 1px solid ${({ theme }) => theme.colors.grey4};
-  display: flex;
-  width: fit-content;
-  cursor: pointer;
-`
-
-const Header = props => {
+const Header = () => {
   const node = useRef()
   const [darkMode, toggleDarkMode] = useDarkMode()
 
-  // get global version and check if v2 or not
-  const v2Toggle = props.path.slice(0, 8) === '/docs/v2'
-
   const button = useRef()
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
-
-  const isMobile = useMediaQuery('(max-width: 960px)')
 
   return (
     <StyledHeader open={isMenuOpen}>
       <Row>
         <StyledNavTitleWrapper>
-          <StyledHomeLink
-            to="/"
-            style={{
-              textDecoration: `none`
-            }}
-          >
+          <StyledHomeLink to="/" style={{ textDecoration: `none` }}>
             <StyledUni />
           </StyledHomeLink>
-          {props.path && props.path !== '/' && props.path !== '' && (
-            <>
-              <StyledNavTitle to={'/' + props.path.split('/')[1]}>
-                {props.path.length > 20 ? 'Docs /' : 'Uniswap Docs /'}
-              </StyledNavTitle>
-              <StyledNavTitle to={'/docs/' + props.path.split('/')[2]}>
-                {props.path.split('/')[2].replace(/(^|\s)\S/g, function(t) {
-                  return t.toUpperCase()
-                })}
-              </StyledNavTitle>
-              <StyledNavTitle to={'/docs/' + props.path.split('/')[2] + '/' + props.path.split('/')[3]}>
-                {props.path.split('/')[3] &&
-                  '/ ' +
-                    props.path
-                      .split('/')[3]
-                      .replace(/\d+-/g, '')
-                      .replace(/-/g, ' ')
-                      .replace(/(^|\s)\S/g, function(t) {
-                        return t.toUpperCase()
-                      })}
-              </StyledNavTitle>{' '}
-            </>
-          )}
         </StyledNavTitleWrapper>
         <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
         </MenuToggle>
         <StyledNav ref={node} open={isMenuOpen}>
-          {!isMobile && <Search {...props} />}
-          {/*{isMobile &&*/}
-          {/*  // (v2Toggle ? <SidebarV2 parent={'/docs/'} {...props} /> : <SidebarV1 parent={'/docs/'} {...props} />)}*/}
-          <VersionToggle to={v2Toggle ? '/docs/v1/' : '/docs/v2/'}>
-            <VersionLabel toggled={!v2Toggle}>V1</VersionLabel>
-            <VersionLabel toggled={v2Toggle}>V2</VersionLabel>
-          </VersionToggle>
           <StyledButton type="button" onClick={toggleDarkMode}>
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </StyledButton>
@@ -276,9 +187,6 @@ const Header = props => {
           </StyledButton>
         </StyledNav>
       </Row>
-      <MobileSearchWrapper>
-        <Search {...props} />
-      </MobileSearchWrapper>
     </StyledHeader>
   )
 }

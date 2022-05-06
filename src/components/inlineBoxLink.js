@@ -1,5 +1,4 @@
 import React from 'react'
-// import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 
 import styled from 'styled-components'
@@ -28,9 +27,9 @@ const StyledBoxLink = styled(Link)`
     max-width: 450px;
     margin: 1rem 0;
     height: ${({ small }) => !small && '200px'};
-    /* height: 200px; */
   }
 `
+
 const StyledCardBG = styled.img`
   width: 80px;
   height: 220px;
@@ -43,7 +42,6 @@ const StyledCardBG = styled.img`
 `
 
 const StyledMiniCardHeader = styled.p`
-  /* line-height: 130%; */
   margin-top: 0px;
   font-weight: 500;
   font-size: 1.25rem;

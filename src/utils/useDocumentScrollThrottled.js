@@ -1,5 +1,3 @@
-/* Completed useDocumentScrollThrottled utility function */
-
 import { useEffect, useState } from 'react'
 import { throttle } from 'lodash'
 
@@ -24,7 +22,7 @@ function useDocumentScrollThrottled(callback) {
     window.addEventListener('scroll', handleDocumentScrollThrottled)
 
     return () => window.removeEventListener('scroll', handleDocumentScrollThrottled)
-  }, [])
+  }, [handleDocumentScrollThrottled])
 }
 
 export default useDocumentScrollThrottled

@@ -285,7 +285,6 @@ h1 {
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
-  /* letter-spacing: -0.07rem; */
   line-height: 1.1;
 }
 
@@ -467,11 +466,9 @@ pre {
   margin-bottom: 0.75rem;
   font-size: 0.85rem;
   line-height: 1.42;
-  /* background: hsla(0, 0%, 0%, 0.04); */
   border-radius: 3px;
   overflow: auto;
   word-wrap: normal;
-  /* padding: 1.45rem; */
 }
 
 table {
@@ -500,16 +497,6 @@ fieldset {
   margin-bottom: 1.45rem;
 }
 
-/* blockquote {
-  margin-left: 1.45rem;
-  margin-right: 1.45rem;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
-} */
 blockquote {
   border-left: 1px solid #ccc;
   margin: 1.5em 10px;

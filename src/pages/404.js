@@ -9,7 +9,7 @@ const NotFoundPage = props => (
     <BG />
     <SEO title='404: Not found' path={props.location.pathname} />
     <div style={{ maxWidth: 1440, padding: 32, margin: 'auto' }}>
-      <h1>Missing Unicorn 🦄</h1>
+      <h1>Missing Unicorn <span role='img' aria-label='img'>🦄</span></h1>
       <p>You just found a page that doesn&#39;t exist.</p>
     </div>
   </Layout>

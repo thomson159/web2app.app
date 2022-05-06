@@ -11,10 +11,7 @@ const StyledMiniCards = styled.a`
   width: 260px;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  /* border: 1px solid ${({ theme }) => theme.textColor}; */
   box-shadow: ${({ theme }) => theme.shadows.huge};
-  /* font-style: monospace; */
-  /* border-radius: 12px; */
   overflow: hidden;
   position: relative;
   display: flex;
@@ -23,7 +20,6 @@ const StyledMiniCards = styled.a`
   justify-content: space-between;
   transition: transform 0.3s ease;
   will-change: transform;
-  // text-align: center;
   :hover {
     transform: scale(1.03);
   }
@@ -32,8 +28,6 @@ const StyledMiniCards = styled.a`
     width: 100%;
     max-width: 450px;
     margin-bottom: 0.25rem;
-    /* height: ${({ small }) => !small && '120px'}; */
-    /* height: 200px; */
   }
 `
 const StyledCardBG = styled(Img)`
@@ -73,13 +67,9 @@ const InlineCard = props => {
   return (
     <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} href={props.to}>
       <Tag>{props.icon}</Tag>
-
       {props.image && <StyledCardBG fluid={props.image} />}
       <StyledMiniCardHeader style={{ color: props.color }}>{props.title}</StyledMiniCardHeader>
-
       <StyledMiniCardDesc>{props.description || props.desc}</StyledMiniCardDesc>
-
-      {/* <StyledArrow>{'->'}</StyledArrow> */}
     </StyledMiniCards>
   )
 }

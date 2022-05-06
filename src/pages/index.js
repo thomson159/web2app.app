@@ -7,11 +7,11 @@ import DevImage from '../images/developer.png'
 import GovImage from '../images/governance.png'
 import AppsImage from '../images/apps.png'
 import BG from '../components/bg'
-import Image from '../images/ca.png'
-import Image2 from '../images/bu.png'
+import ImageCa from '../images/ca.png'
+import ImageBu from '../images/bu.png'
 import { useDarkMode } from '../contexts/Application'
-import axios from 'axios';
-import CookieConsent from "react-cookie-consent";
+import axios from 'axios'
+import CookieConsent from 'react-cookie-consent'
 
 const StyledBody = styled.div`
   position: relative;
@@ -23,7 +23,7 @@ const StyledBody = styled.div`
   @media (max-width: 960px) {
     margin-bottom: 0;
     padding: 1rem;
-    padding-bottom: 8rem;
+    padding-bottom: 3rem;
   }
 `
 
@@ -40,13 +40,10 @@ const StyledBodyTitle = styled.h1`
   font-size: 56px;
   white-space: wrap;
   overflow-wrap: normal;
-  @media (max-width: 1024px) {
-    margin: 2rem 0 0rem 0;
-  }
+  margin: 2rem 0 2rem 0;
 
   @media (max-width: 640px) {
     width: 100%;
-    margin: 2rem 0 2rem 0;
     font-weight: 500;
     text-align: left;
     font-size: 58px;
@@ -139,6 +136,7 @@ const StyledTradeButton = styled.button`
 `
 
 const StyledInput = styled.input`
+  margin-bottom: 20px;
   color: ${({ theme }) => theme.colors.grey9};
   background-color: transparent;
   position: relative;
@@ -181,26 +179,14 @@ const IndexPage = props => {
   async function handleSubmit(e) {
     e.preventDefault()
     setShow('load')
-    const data = {
-      url: url
-    }
     try {
-      // const response = await fetch('https://api.web2app.app/create/', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Access-Control-Allow-Origin': 'https://api.web2app.app/'
-      //   },
-      //   mode: 'cors',
-      //   credentials: 'include',
-      //   body: JSON.stringify(data)
-      // })
-      const response = await axios.post(`https://api.web2app.app/create`, JSON.stringify(data))
+      const response = await axios.post(`https://api.web2app.app/create`, JSON.stringify({
+        url: url
+      }))
 
-      const test = await response.json()
       if (response.status === 200) {
         var urlRegex = /(https?:\/\/[^]*.apk)/
-        const matches = test.responseLogs.substring(500).match(urlRegex)[0]
+        const matches = await response.json().responseLogs.substring(500).match(urlRegex)[0]
         setFinalUrl(matches)
         setShow('success')
       } else {
@@ -209,10 +195,6 @@ const IndexPage = props => {
     } catch {
       setShow('error')
     }
-  }
-  let local = "false"
-  if (typeof window !== "undefined") {
-    local = window.localStorage.getItem("showMe");
   }
 
   return (
@@ -227,11 +209,11 @@ const IndexPage = props => {
       </CookieConsent>
       <SEO title='Turn website into app' path={props.location.pathname} description='Turn website into app' />
       <BG />
-      <img src={!darkMode ? Image : Image2} alt="image"
+      <img src={!darkMode ? ImageCa : ImageBu} alt="character"
         style={{
           position: 'fixed',
           top: 140,
-          left: 1000,
+          left: 900,
           width: 600,
         }} />
       <StyledBody>
@@ -243,31 +225,29 @@ const IndexPage = props => {
           {show === 'url' &&
             <form onSubmit={handleSubmit}>
               <StyledBodySubTitle>
-                😎 Free. No account. Enter the website address.
+                <span role='img' aria-label='img'>😎</span> Free. No account. Enter the website address.
               </StyledBodySubTitle>
-              <StyledItemRow>
-                <StyledInput
-                  required={true}
-                  value={url}
-                  onChange={e => setUrl(e.target.value)}
-                  type='url'
-                  placeholder='https://yourwebsite.com/'
-                />
-              </StyledItemRow>
-              <div style={{ marginBottom: 30 }}>
+              <StyledInput
+                required={true}
+                value={url}
+                onChange={e => setUrl(e.target.value)}
+                type='url'
+                placeholder='https://yourwebsite.com/'
+              />
+              <StyledTradeButton type='submit'>
+                Create app
+              </StyledTradeButton>
+              <div style={{ marginTop: 30 }}>
                 Estimated time is 20 minutes.
                 <br />To download the application, you must have a permanent internet connection.
                 <br />You cannot turn off the website and you have to wait until the app is built.
               </div>
-              <StyledTradeButton type='submit'>
-                Create app
-              </StyledTradeButton>
             </form>
           }
           {show === 'load' &&
             <>
               <StyledBodySubTitle>
-                ️⏱ Application development is in progress.
+                ️<span role='img' aria-label='img'>⏱</span> Application development is in progress.
               </StyledBodySubTitle>
               <div className='lds-ring' style={{ marginBottom: 10 }}>
                 <div></div>
@@ -282,14 +262,14 @@ const IndexPage = props => {
           {show === 'error' &&
             <>
               <StyledBodySubTitle>
-                😡 Something went wrong. Please try again later.
+                <span role='img' aria-label='img'>😡</span> Something went wrong. Please try again later.
               </StyledBodySubTitle>
             </>
           }
           {show === 'success' &&
             <>
               <StyledBodySubTitle>
-                👍 Application development completed successfully.
+                <span role='img' aria-label='img'>👍</span> Application development completed successfully.
               </StyledBodySubTitle>
               <StyledTradeButton onClick={() => { window.open(finalUrl, '_blank') }}>
                 Download app
@@ -303,7 +283,7 @@ const IndexPage = props => {
                   <b>Free Demo <span>↗</span></b>
                 </StyledBodySubTitle>
                 <StyledBodySubTitle style={{ marginBottom: '0.25rem', fontSize: 20 }}>
-                  Application available only on <span><b>Android</b></span>.
+                  Application available only on Android.
                 </StyledBodySubTitle>
                 <StyledInfoText style={{ opacity: '0.6' }}>
                   Find out more about the offer.
@@ -336,13 +316,11 @@ const StyledSectionHeader = styled.h1`
     width: 100%;
     line-height: 2.5rem;
     max-width: 600px;
-    margin-top: 4rem;
   }
   
   @media (max-width: 640px) {
     width: 100%;
     font-weight: 400;
-    margin-top: 4rem;
     text-align: left;
   }
 `
@@ -444,49 +422,39 @@ const DeveloperSection = () => {
         <StyledItemRow>
           <StyledItemColumn>
             <Button style={{ backdropFilter: 'blur(4px)', borderRadius: '20px' }} outlined href='#up'>
-              <div>
-                <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
-                  <b>Demo <span>↗</span></b>
-                </StyledBodySubTitle>
-                <StyledBodySubTitle style={{ marginBottom: '0.25rem', fontSize: 20 }}>
-                  Free
-                </StyledBodySubTitle>
-                <StyledInfoText>
-                  🛠 Application available only on <b><span>Android</span></b>.
-                </StyledInfoText>
-                <StyledInfoText>
-                  🛠 The offer allows you to download a <b><span>.apk</span></b> file with a size of 56.4 MB once.
-                </StyledInfoText>
-                <StyledInfoText>
-                  🛠 The application requires a permanent internet connection.
-                </StyledInfoText>
-                <StyledInfoText>
-                  ✅ You don't have to worry about updating the application. If you make changes to the website, the application will be updated automatically.
-                </StyledInfoText>
-                <StyledInfoText>
-                  ✅ To build the application, you only need to enter the website address. You can enter any address. You
-                  don't need to be the site owner and have access to the code or the server.
-                </StyledInfoText>
-                <StyledInfoText>
-                  ❌ You cannot set your icon, application name and assign applications with your own keys.
-                </StyledInfoText>
-                <StyledInfoText>
-                  ❌ The application cannot be customized and implemented to the Google Play store and other stores.
-                </StyledInfoText>
-                <StyledInfoText>
-                  ❌ It is not possible to make additional changes in the application.
-                </StyledInfoText>
-                <StyledInfoText>
-                  ❌ We do not provide technical support, but if we have such an opportunity, we will be happy to answer
-                  your questions.
-                </StyledInfoText>
-              </div>
+              <StyledBodySubTitle style={{ marginBottom: '0.25rem' }}>
+                <b>Demo <span>↗</span></b>
+              </StyledBodySubTitle>
+              <StyledBodySubTitle style={{ marginBottom: '0.25rem', fontSize: 20 }}>
+                Free
+              </StyledBodySubTitle>
+              <StyledInfoText>
+                🛠 Application available only on Android.
+                <br />
+                🛠 The offer allows you to download a .apk file with a size of 56.4 MB once.
+                <br />
+                🛠 The application requires a permanent internet connection.
+                <br />
+                ✅ You don't have to worry about updating the application. If you make changes to the website, the application will be updated automatically.
+                <br />
+                ✅ To build the application, you only need to enter the website address. You can enter any address. You
+                don't need to be the site owner and have access to the code or the server.
+                <br />
+                ❌ You cannot set your icon, application name and assign applications with your own keys.
+                <br />
+                ❌ The application cannot be customized and implemented to the Google Play store and other stores.
+                <br />
+                ❌ It is not possible to make additional changes in the application.
+                <br />
+                ❌ We do not provide technical support, but if we have such an opportunity, we will be happy to answer
+                your questions.
+              </StyledInfoText>
             </Button>
           </StyledItemColumn>
         </StyledItemRow>
       </StyledSection>
-      <div>
-        Illustration by <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6" target='_blank'>Icons 8</a>
+      <div style={{ marginTop: '4rem' }}>
+        Illustration by <a rel='noreferrer' target='_blank' href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Icons 8</a> from <a rel='noreferrer' target='_blank' href="https://icons8.com/illustrations">Ouch!</a>
       </div>
     </>
   )

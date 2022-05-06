@@ -17,13 +17,6 @@ const Wrapper = styled.div`
   position: relative;
 `
 
-// const LineNo = styled.span`
-//   display: inline-block;
-//   width: 2em;
-//   user-select: none;
-//   opacity: 0.3;
-// `
-
 const Pre = styled.pre`
   text-align: left;
   font-size: 1rem;
@@ -82,7 +75,6 @@ export default ({ children, className }) => {
                 )
               ) : (
                 <div key={i} {...getLineProps({ line, key: i })}>
-                  {/* <LineNo>{i + 1}</LineNo> */}
                   {line.map((token, key) => (
                     <span key={key} {...getTokenProps({ token, key })} />
                   ))}

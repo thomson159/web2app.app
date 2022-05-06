@@ -6,7 +6,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `web2app.app`,
+    title: `web2app`,
     description: `Turn website into app`,
     author: `@web2app.app`,
     menulinks: menu,
@@ -15,15 +15,6 @@ module.exports = {
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-        bucketName: process.env.AWS_S3_BUCKET || 'NOT_SPECIFIED',
-        protocol: 'https',
-        hostname: 'web2app.app',
-        acl: null
-      }
-    },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
@@ -84,7 +75,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
-              title: 'web2app.app', // website title
+              title: 'web2app', // website title
               separator: '|', // default
               author: '@web2app.app',
               background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
@@ -136,49 +127,5 @@ module.exports = {
         defer: false
       }
     },
-    // {
-    //   resolve: `gatsby-plugin-google-gtag`,
-    //   options: {
-    //     // You can add multiple tracking ids and a pageview event will be fired for all of them.
-    //     trackingIds: [
-    //       'UA-128182339-3' // Google Analytics / GA
-    //     ],
-    //     gtagConfig: {
-    //       anonymize_ip: true,
-    //       cookie_expires: 0
-    //     }
-    //   }
-    // },
-    // {
-    //   resolve: `gatsby-plugin-feed`,
-    //   options: {
-    //     query: `
-    //       {
-    //         site {
-    //           siteMetadata {
-    //             title
-    //             description
-    //             siteUrl
-    //             site_url: siteUrl
-    //           }
-    //         }
-    //       }
-    //     `,
-
-    //   }
-    // },
-    // 'gatsby-plugin-eslint',
-    // {
-    //   resolve: `gatsby-plugin-algolia-docsearch-appid`,
-    //   options: {
-    //     apiKey: '8962240e69e6d23a88432f501c115470',
-    //     indexName: 'uniswap_v2_docs',
-    //     appId: 'VZ0CVS8XCW',
-    //     inputSelector: 'blank' // use dummy selector to avoid double render
-    //   }
-    // }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ]
 }

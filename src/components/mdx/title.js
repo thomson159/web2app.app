@@ -8,7 +8,6 @@ const StyledTitle = styled.h2`
   white-space: wrap;
   overflow-wrap: normal;
   max-width: 900px;
-  // text-align: center;
   @media (max-width: 960px) {
     width: 100%;
     font-size: 4rem;

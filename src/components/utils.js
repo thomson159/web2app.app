@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import uImage from '../images/big_unicorn_fade.png'
 import uBanner from '../images/unicorn_banner.png'
 
 import gImage from '../images/glimmer_bg.svg'
