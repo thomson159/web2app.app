@@ -78,7 +78,7 @@ module.exports = {
               title: 'Web2App', // website title
               separator: '|', // default
               author: '@web2app.app',
-              background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
+              background: require.resolve('./static/images/twitter_card.png'), // path to 1200x630px file or hex code, defaults to black (#000000)
               fontColor: '#FF3093', // defaults to white (#ffffff)
               fontStyle: 'sans-serif', // default
               titleFontSize: 124, // default
